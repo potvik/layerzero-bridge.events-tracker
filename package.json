@@ -1,8 +1,8 @@
 {
-  "name": "onebtc.token-tracker",
+  "name": "layerzero-bridge.events-tracker",
   "private": true,
   "version": "1.0.0",
-  "description": "onebtc.token-tracker",
+  "description": "layerzero-bridge.events-tracker",
   "license": "MIT",
   "scripts": {
     "build": "nest build",
