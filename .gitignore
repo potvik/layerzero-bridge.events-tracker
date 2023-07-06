@@ -396,5 +396,4 @@ Temporary Items
 # Local
 .env
 dist
-
-fly.toml
+keys

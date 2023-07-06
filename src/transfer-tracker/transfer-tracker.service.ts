@@ -60,8 +60,12 @@ export class TransferTrackerService {
       eventName: 'PacketReceived',
       getEventCallback: async (res) => {
         if (res?.name === 'PacketReceived' && res?.returnValues?.srcChainId == '116') {
-          const event = await parseTx(res.transactionHash, web3Service.getClient(CHAIN.BSC));
-          this.events[CHAIN.BSC].push({ ...event, dstChainId: '102' });
+          try {
+            const event = await parseTx(res.transactionHash, web3Service.getClient(CHAIN.BSC));
+            this.events[CHAIN.BSC].push({ ...event, dstChainId: '102' });
+          } catch (e) {
+            this.logger.error('Error parse PacketReceived', e);
+          }
         }
       }
     });
@@ -76,8 +80,12 @@ export class TransferTrackerService {
       eventName: 'PacketReceived',
       getEventCallback: async (res) => {
         if (res?.name === 'PacketReceived' && res?.returnValues?.srcChainId == '116') {
-          const event = await parseTx(res.transactionHash, web3Service.getClient(CHAIN.ETH));
-          this.events[CHAIN.ETH].push({ ...event, dstChainId: '101' });
+          try {
+            const event = await parseTx(res.transactionHash, web3Service.getClient(CHAIN.ETH));
+            this.events[CHAIN.ETH].push({ ...event, dstChainId: '101' });
+          } catch (e) {
+            this.logger.error('Error parse PacketReceived', e);
+          }
         }
       }
     });
@@ -92,8 +100,12 @@ export class TransferTrackerService {
       eventName: 'PacketReceived',
       getEventCallback: async (res) => {
         if (res?.name === 'PacketReceived') {
-          const event = await parseTx(res.transactionHash, web3Service.getClient(CHAIN.HMY));
-          this.events[CHAIN.HMY].push({ ...event, dstChainId: '116' });
+          try {
+            const event = await parseTx(res.transactionHash, web3Service.getClient(CHAIN.HMY));
+            this.events[CHAIN.HMY].push({ ...event, dstChainId: '116' });
+          } catch (e) {
+            this.logger.error('Error parse PacketReceived', e);
+          }
         }
       }
     });

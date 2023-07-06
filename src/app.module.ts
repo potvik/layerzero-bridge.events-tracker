@@ -7,6 +7,8 @@ import configuration from './config';
 import entities from './typeorm';
 import { TransferTrackerModule } from './transfer-tracker/transfer-tracker.module';
 import { Web3Module } from 'nest-web3';
+import { PrometheusModule } from "@willsoto/nestjs-prometheus";
+import { OperationsMetricsModule } from './op-metrics/op-metrics.module';
 
 @Module({
   imports: [
@@ -37,7 +39,9 @@ import { Web3Module } from 'nest-web3';
       inject: [ConfigService],
     }),
     Web3Module,
-    TransferTrackerModule
+    TransferTrackerModule,
+    OperationsMetricsModule,
+    PrometheusModule.register()
   ],
   controllers: [AppController],
   providers: [AppService],

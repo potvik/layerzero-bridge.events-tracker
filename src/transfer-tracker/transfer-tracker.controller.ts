@@ -14,6 +14,15 @@ export class TransferTrackerController {
     return this.trackerService.getInfo();
   }
 
+  @Get('/synced')
+  getLife() {
+    const info = this.trackerService.getInfo();
+
+    return info.bsc.info.progress === "1.0000" &&
+      info.eth.info.progress === "1.0000" &&
+      info.hmy.info.progress === "1.0000";
+  }
+
   @Get('/events')
   getEvents(@Query() query: any) {
     return this.trackerService.getEvents(query);
