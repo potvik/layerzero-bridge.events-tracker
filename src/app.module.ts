@@ -8,6 +8,7 @@ import entities from './typeorm';
 import { TransferTrackerModule } from './transfer-tracker/transfer-tracker.module';
 import { Web3Module } from 'nest-web3';
 import { PrometheusModule } from "@willsoto/nestjs-prometheus";
+import { OperationsMetricsModule } from './op-metrics/op-metrics.module';
 
 @Module({
   imports: [
@@ -39,6 +40,7 @@ import { PrometheusModule } from "@willsoto/nestjs-prometheus";
     }),
     Web3Module,
     TransferTrackerModule,
+    OperationsMetricsModule,
     PrometheusModule.register()
   ],
   controllers: [AppController],
